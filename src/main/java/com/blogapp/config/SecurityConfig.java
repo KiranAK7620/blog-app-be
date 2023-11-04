@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -56,9 +55,9 @@ public class SecurityConfig {
                 csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .antMatchers(PUBLIC_URLS)
+                .requestMatchers(PUBLIC_URLS)
                 .permitAll()
-                .antMatchers(HttpMethod.GET)
+                .requestMatchers(HttpMethod.GET)
                 .permitAll()
                 .anyRequest()
                 .authenticated()
